@@ -28,7 +28,7 @@ function speak(){
 
     synth.speak(utterThis);
     setTimeout(function(){
-        jhonnyPic();
+        JhonnyPic();
         jhonnySavesHumans();
     },5000);
     Webcam.attach(camera);
@@ -36,8 +36,8 @@ function speak(){
 
 
 Webcam.set({
-    width: 1920,
-    height: 1080,
+    width: 360,
+    height: 250,
     image_format: 'jpeg',
     jpeg_quality: 90
 });
@@ -45,7 +45,7 @@ Webcam.set({
 camera = document.getElementById("camera");
 
 function JhonnyPic(){
-    webcam.snap(function(data_URL){
+    Webcam.snap(function(data_URL){
         document.getElementById("cam_result").innerHTML = '<img id="jhonnydoc" src="'+data_URL+'">';
     });
 }
