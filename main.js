@@ -12,19 +12,25 @@ recognition.onresult = function run(event){
 
     var Content = event.results[0][0].transcript;
 
+    if(Content=="take my selfie"){
     console.log(Content);
-    document.getElementById("jhonnyText").innerHTML = Content;
     speak();
+    }
+    document.getElementById("jhonnyText").innerHTML = Content;
 }
 
 function speak(){
     var synth = window.speechSynthesis;
 
-    var speak_data = document.getElementById("jhonnyText").value;
+    var speak_data = "Taking Your Selfie In 5 Seconds";
 
     var utterThis = new SpeechSynthesisUtterance(speek_data);
 
     synth.speak(utterThis);
+    setTimeout(function(){
+        jhonnyPic();
+        jhonnySavesHumans();
+    },5000);
     Webcam.attach(camera);
 }
 
@@ -37,3 +43,16 @@ Webcam.set({
 });
 
 camera = document.getElementById("camera");
+
+function JhonnyPic(){
+    webcam.snap(function(data_URL){
+        document.getElementById("cam_result").innerHTML = '<img id="jhonnydoc" src="'+data_URL+'">';
+    });
+}
+
+function jhonnySavesHumans(){
+    var link = document.getElementById("link");
+    var image = document.getElementById("jhonnydoc").src;
+    link.href = image;
+    link.click();
+}
