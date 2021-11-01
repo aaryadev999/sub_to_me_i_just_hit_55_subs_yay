@@ -24,7 +24,7 @@ function speak(){
 
     var speak_data = "Taking Your Selfie In 5 Seconds";
 
-    var utterThis = new SpeechSynthesisUtterance(speek_data);
+    var utterThis = new SpeechSynthesisUtterance(speak_data);
 
     synth.speak(utterThis);
     setTimeout(function(){
